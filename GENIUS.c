@@ -68,7 +68,7 @@ main(){
 			}
 			if(acertos == false){
 				printf("VOCÊ ERROU AMIGO(A), MAS NÃO FIQUE TRISTE");
-				printf("\nVOCÊ CHEGOU AO NÍVEL %d", fase);
+				printf("\nVOCÊ PAROU NO NÍVEL %d", fase);
 				qtd_num = 1;
 				sleep(3);
 				system("cls");
