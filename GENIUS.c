@@ -13,29 +13,27 @@ main(){
 	
 	unsigned short int vet[256], re[256], i, j, aux = 0, fase = 1, num;
 	
-	//função do Menu
+	//funÃ§Ã£o do Menu
 	menu();
 
 	if (escolha == 1){
-	
-		fase = 1;	
 		
-		 srand()= time(3000);
+		 srand(time(3000));
 		
-		//alocação do valor
+		//alocaÃ§Ã£o do valor
 		for(i = 0; i< fase; i++){
-			vet[i] = rand();
+			vet[i] = rand() % 3;
 		}
-		//verificação do valor(teste)
+		//verificaÃ§Ã£o do valor(teste)
 		for(i = 0; i< fase; i++){
 			printf("\n\n%d", vet[i]);
 		}
 		//pergunta ao usuario
 		for(i = 0; i< fase; i++){
-			printf("\n\n\tqual o número ? ");
+			printf("\n\n\tqual o nÃºmero ? ");
 			scanf("%d", &re[i]);
 		}
-		//verificação do valor
+		//verificaÃ§Ã£o do valor
 		for(i = 0; i < 256; i++){
 			if(re[i] == vet[i]){
 			aux++;		
@@ -50,7 +48,7 @@ main(){
 //Menu
 menu(){
 	
-	printf("\n\n\tO que deseja fazer?\n\n 1 - 1 JOGADOR \n\n 2 - 2 JOGADORES\n\n 3 - ABSOLUTAMENTE NADA\n\n Opção\a: ");
+	printf("\n\n\tO que deseja fazer?\n\n 1 - 1 JOGADOR \n\n 2 - 2 JOGADORES\n\n 3 - ABSOLUTAMENTE NADA\n\n OpÃ§Ã£o\a: ");
 	scanf("%d", &escolha);
 	
 }
