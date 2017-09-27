@@ -19,56 +19,86 @@ main(){
 	
 	setlocale(LC_ALL, "portuguese");
 	
-	unsigned short int vet[256], re[256], i, j, aux = 0, fase = 1, num = 3;
-	bool jog_1;
+	unsigned short int vet[256], re[256], i, aux = 0, fase = 1, num = 3, qtd_num = 1;
+	char reload;
+	bool jog_1, acertos;
 	//função do Menu
+	
 	menu();
-
+	system("cls");
+	
 	if (escolha == 1){
 		
 		 do{
 			
 			jog_1 = true;
+			acertos = true;
 		 	srand(time(NULL));
 		
 			//alocação do valor
-			for(i = 0; i< fase; i++){
+			for(i = qtd_num - 1 ; i< qtd_num; i++){
 				vet[i] = rand() % num + 1;
 				
 			}
-			//verificação do valor(teste)
-			for(i = 0; i< fase; i++){
-				printf("\n\n%d", vet[i]);
+			//valor randomizado
+			for(i = 0; i< qtd_num; i++){
+				system("cls");
+				printf("%d ", vet[i]);
+				sleep(2);
+				system("cls");
 			}
 			
 			//pergunta ao usuario
-			for(i = 0; i< fase; i++){
-				printf("\n\n\tqual o número ? ");
+			for(i = 0; i< qtd_num; i++){
+				printf("\n\n\tqual o número na posição %d ? ", i + 1);
 				scanf("%d", &re[i]);
+				system("cls");
 			}
 			//verificação do valor
-			for(i = 0; i < num; i++){
-				for(j = 0; j < num; j++){
-					if(re[i] == vet[j]){
-						aux++;		
-					}
-				}	
+			for(i = 0; i < qtd_num; i++){
+				if(re[i] != vet[i]){		
+					acertos = false;
+				}
+				
 			}	
-			if (aux > 0){
-				printf("VOCÊ ACERTOU!");
-			}else{
-				jog_1 == false;
-				printf("VOCÊ ERROU AMIGO(A), SINTO MUITO");
+			if (acertos == true){
+				printf("VOCÊ ACERTOU");
+				qtd_num++;
+				
+			}
+			if(acertos == false){
+				printf("VOCÊ ERROU AMIGO(A), MAS NÃO FIQUE TRISTE");
+				printf("\nVOCÊ CHEGOU AO NÍVEL %d", fase);
+				qtd_num = 1;
+				sleep(3);
+				system("cls");
+				jog_1 = false;
 			}		
-		}while(jog_1 == true);
-		 	
+			if(qtd_num % 10 == 0){
+				fase++;
+				num = num + 3;
+			}
+			
+		}while(jog_1 == true);	 	
+		
+		system("cls");
+		
+		printf("\nVocê deseja continuar jogando? \nSIM OU NÃO \n\tresposta: ");
+		scanf("%s", &reload);
+		
+		if((reload == 's')||(reload == 'sim')||(reload == 'SIM')){
+			system("cls");
+			menu();
+		}else{
+			printf("\n\n\tAté a proxima\n\n");
+			sleep (2);
+			exit;
+		}
 	}		
 }
 
 //Menu
 void menu(){
-	
 	printf("\n\n\tO que deseja fazer?\n\n 1 - 1 JOGADOR \n\n 2 - 2 JOGADORES\n\n 3 - ABSOLUTAMENTE NADA\n\n Opção\a: ");
-	scanf("%d", &escolha);
-	
+	scanf("%d", &escolha);	
 }
