@@ -2,7 +2,6 @@
 #include <locale.h>
 #include <time.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
 
 enum boolean {
@@ -12,7 +11,6 @@ typedef  enum boolean  bool;
 
 int menu();
 void nome(char usu_nome[20]);
-int random();
 
 main() {
 	setlocale(LC_ALL, "portuguese");
@@ -36,7 +34,10 @@ main() {
 		 	srand(time(NULL));
 		 	
 			//alocação do valor
-			random(vet, qtd_num, i, num);
+			for(i = qtd_num - 1 ; i< qtd_num; i++){
+				vet[i] = rand() % num + 1;
+				
+			}
 			//valor randomizado
 			for(i = 0; i< qtd_num; i++){
 				system("cls");
@@ -101,6 +102,9 @@ main() {
 		
 		nome(usu1);
 		nome(usu2);
+		
+		
+		
 	}
 	//INSTRUÇÕES 
 	if(escolha == 3){
@@ -147,13 +151,3 @@ void nome(char usu_nome[20]){
 	 }while(strlen(usu_nome) >= 20);
 			 
 }	
-
-int random(){
-	
-	unsigned short int vet[256], qtd_num, i, num = 3;
-	
-	for(i = qtd_num - 1 ; i< qtd_num; i++){
-			vet[i] = rand() % num + 1;		
-	}
-	
-}
