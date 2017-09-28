@@ -1,24 +1,18 @@
-#include<stdio.h>
-#include<locale.h>
-#include<time.h>
+#include <stdio.h>
+#include <locale.h>
+#include <time.h>
 #include <stdlib.h>
 #include <unistd.h>
 
 //EMULAÇÃO DE FUNÇÃO BOLEANA
-enum boolean {
-    true = 1, false = 0
-};
-typedef  enum boolean  bool;
+#define TRUE 1;
+#define FALSE 0;
 
-unsigned short int escolha;
-
+unsigned short int escolha, dif;
 void menu();
- 
-
+void nivel();
 main(){
-	
 	setlocale(LC_ALL, "portuguese");
-	
 	unsigned short int vet[256], re[256], i, aux = 0, fase = 1, num = 3, qtd_num = 1;
 	char reload;
 	bool jog_1, acertos;
@@ -44,7 +38,7 @@ main(){
 			for(i = 0; i< qtd_num; i++){
 				system("cls");
 				printf("%d ", vet[i]);
-				sleep(2);
+				sleep(1.6);
 				system("cls");
 			}
 			
@@ -63,6 +57,7 @@ main(){
 			}	
 			if (acertos == true){
 				printf("VOCÊ ACERTOU");
+				sleep(2);
 				qtd_num++;
 				
 			}
@@ -94,11 +89,25 @@ main(){
 			sleep (2);
 			exit;
 		}
+	}
+	
+	if(escolha == 2){
+		
+		
+		
 	}		
 }
 
 //Menu
 void menu(){
-	printf("\n\n\tO que deseja fazer?\n\n 1 - 1 JOGADOR \n\n 2 - 2 JOGADORES\n\n 3 - ABSOLUTAMENTE NADA\n\n Opção\a: ");
-	scanf("%d", &escolha);	
+	do{
+		printf("\t\t\tGENIUS\n\n\tO que deseja fazer?\n\n 1 - 1 JOGADOR \n\n 2 - 2 JOGADORES\n\n3 - INSTRUÇÕES\n\n 4 - ABSOLUTAMENTE NADA\n\n Opção\a: ");
+		scanf("%d", &escolha);	
+	}while((escolha <1)||(escolha>4));
+	
+	if(escolha == 3){
+		system("cls");
+		printf("\n\n\tFIM");
+		exit;
+	}
 }
