@@ -4,36 +4,39 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#define TRUE 1;
-#define FALSE 0;
 
-unsigned short int dif;
+enum boolean {
+    true = 1, false = 0
+};
+typedef  enum boolean  bool;
+
 int menu();
 void nome(char usu_nome[20]);
+int random();
 
 main() {
 	setlocale(LC_ALL, "portuguese");
 	unsigned short int vet[256], re[256], i, aux = 0, fase = 1, num = 3, qtd_num = 1, escolha;
-	char char usu1[20], usu2[20], reload;
+	char usu1[20], usu2[20], reload;
 	bool jog_1, acertos;
 	//função do Menu
 	
 	escolha = menu();
 	system("cls");
 	
+	//UM JOGADOR
 	if (escolha == 1) {
 		
-		nome(usu1[20]);
+		nome(usu1);
+		system("cls");
+		
 		 do{
 			jog_1 = true;
 			acertos = true;
 		 	srand(time(NULL));
 		 	
 			//alocação do valor
-			for(i = qtd_num - 1 ; i< qtd_num; i++){
-				vet[i] = rand() % num + 1;
-				
-			}
+			random(vet, qtd_num, i, num);
 			//valor randomizado
 			for(i = 0; i< qtd_num; i++){
 				system("cls");
@@ -52,12 +55,11 @@ main() {
 			for(i = 0; i < qtd_num; i++){
 				if(re[i] != vet[i]){		
 					acertos = false;
-				}
-				
+				}	
 			}	
 			if (acertos == true){
 				printf("VOCÊ ACERTOU\n");
-				sleep(1.5);
+				sleep(0.5);
 				qtd_num++;
 				
 			}
@@ -90,29 +92,17 @@ main() {
 			exit;
 		}
 	}
-	
+	//DOIS JOGADORES
 	if(escolha == 2){
 		
 		printf("\t\tDOIS JOGADORES\n");
 		sleep(2);
 		system("cls");
 		
-		do{	
-			 	printf("Nome do primeiro jogador: ");
-			 	fflush(stdin);
-			 	scanf("%[^\n]", usu1);
-				
-				printf("Nome do segundo jogador: ");
-			 	fflush(stdin);
-			 	scanf("%[^\n]", usu2);
-			 	
-		}while((strlen(usu1) >= 20)||(strlen(usu2) >= 20));
-		
-		
-		
-		
+		nome(usu1);
+		nome(usu2);
 	}
-	
+	//INSTRUÇÕES 
 	if(escolha == 3){
 		printf("-----------------------------------INSTRUÇÕES-----------------------------------\n");
 	printf("1.Repita a sequência\n2.Crie sua própria sequência\n3.Repita a seqüência, agora apertando somente um número\n\n");
@@ -123,14 +113,13 @@ main() {
 	system("cls");
 	main();
 	}
+	//SAIR
 	if(escolha == 4){
 		system("cls");
 		printf("\n\tATÉ A PROXIMA...\n\n");
 		system("pause");
 	}
 }		
-
-
 //Menu
 int menu(){
 	
@@ -154,8 +143,17 @@ void nome(char usu_nome[20]){
 		do{	
 			printf("Por favor, digite seu nome: ");
 		 	fflush(stdin);
-		 	scanf("%[^\n]", usu_nome);
-				
-	 }while(strlen(usu1) >= 20);
+		 	scanf("%[^\n]", usu_nome);		
+	 }while(strlen(usu_nome) >= 20);
 			 
 }	
+
+int random(){
+	
+	unsigned short int vet[256], qtd_num, i, num = 3;
+	
+	for(i = qtd_num - 1 ; i< qtd_num; i++){
+			vet[i] = rand() % num + 1;		
+	}
+	
+}
