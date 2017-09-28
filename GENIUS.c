@@ -3,6 +3,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 enum boolean {
     true = 1, false = 0
@@ -66,7 +67,7 @@ main() {
 			}
 			if(acertos == false){
 				printf("VOCÊ ERROU AMIGO(A), MAS NÃO FIQUE TRISTE");
-				printf("\nVOCÊ PAROU NO NÍVEL %d, %s", fase, usu1);
+				printf("\nVOCÊ PAROU NO NÍVEL %d, %s", fase, strupr(usu1));
 				qtd_num = 1;
 				sleep(3);
 				system("cls");
@@ -84,7 +85,7 @@ main() {
 		printf("\nVocê deseja continuar jogando? \nSIM OU NÃO \n\tresposta: ");
 		scanf("%s", &reload);
 		
-		if((reload == 's')||(reload == 'sim')||(reload == 'SIM')){
+		if((reload == 's')||(reload == 'sim')||(reload == 'SIM')||(reload == 'S')){
 			system("cls");
 			main();
 		}else{
@@ -148,6 +149,5 @@ void nome(char usu_nome[20]){
 			printf("Por favor, digite seu nome: ");
 		 	fflush(stdin);
 		 	scanf("%[^\n]", usu_nome);		
-	 }while(strlen(usu_nome) >= 20);
-			 
+	 }while(strlen(usu_nome) >= 20);			 
 }	
