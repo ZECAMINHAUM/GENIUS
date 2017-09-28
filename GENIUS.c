@@ -3,6 +3,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include<string.h>
 
 //EMULAÇÃO DE FUNÇÃO BOLEANA
 #define TRUE 1;
@@ -14,7 +15,7 @@ void nivel();
 main(){
 	setlocale(LC_ALL, "portuguese");
 	unsigned short int vet[256], re[256], i, aux = 0, fase = 1, num = 3, qtd_num = 1;
-	char reload;
+	char  usu1[20], usu2[20], reload;
 	bool jog_1, acertos;
 	//função do Menu
 	
@@ -28,7 +29,14 @@ main(){
 			jog_1 = true;
 			acertos = true;
 		 	srand(time(NULL));
-		
+		 	
+		 	do{	
+			 	printf("Por favor, digite seu nome man(a): ");
+			 	for(i = 0; i < 20; i++){
+			 		scanf("%s", usu1[i]);
+				 }
+			 }while(strlen(usu1) >= 20);
+			 
 			//alocação do valor
 			for(i = qtd_num - 1 ; i< qtd_num; i++){
 				vet[i] = rand() % num + 1;
@@ -63,7 +71,7 @@ main(){
 			}
 			if(acertos == false){
 				printf("VOCÊ ERROU AMIGO(A), MAS NÃO FIQUE TRISTE");
-				printf("\nVOCÊ PAROU NO NÍVEL %d", fase);
+				printf("\nVOCÊ PAROU NO NÍVEL %d %s", fase, usu1);
 				qtd_num = 1;
 				sleep(3);
 				system("cls");
@@ -93,7 +101,16 @@ main(){
 	
 	if(escolha == 2){
 		
+		printf("\t\tDOIS JOGADORES");
 		
+		
+		
+	}
+	
+	if(escolha == 3){
+		
+		printf("*---------------------------------------------------INSTRUÇÕES--------------------------------------------------*");
+		printf("");
 		
 	}		
 }
@@ -105,7 +122,7 @@ void menu(){
 		scanf("%d", &escolha);	
 	}while((escolha <1)||(escolha>4));
 	
-	if(escolha == 3){
+	if(escolha == 4){
 		system("cls");
 		printf("\n\n\tFIM");
 		exit;
