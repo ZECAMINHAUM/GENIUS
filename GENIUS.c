@@ -3,40 +3,32 @@
 #include <time.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include<string.h>
-
-//EMULAÇÃO DE FUNÇÃO BOLEANA
+#include <string.h>
 #define TRUE 1;
 #define FALSE 0;
 
-unsigned short int escolha, dif;
-void menu();
-void nivel();
-main(){
+unsigned short int dif;
+int menu();
+void nome(char usu_nome[20]);
+
+main() {
 	setlocale(LC_ALL, "portuguese");
-	unsigned short int vet[256], re[256], i, aux = 0, fase = 1, num = 3, qtd_num = 1;
-	char  usu1[20], usu2[20], reload;
+	unsigned short int vet[256], re[256], i, aux = 0, fase = 1, num = 3, qtd_num = 1, escolha;
+	char char usu1[20], usu2[20], reload;
 	bool jog_1, acertos;
 	//função do Menu
 	
-	menu();
+	escolha = menu();
 	system("cls");
 	
-	if (escolha == 1){
+	if (escolha == 1) {
 		
+		nome(usu1[20]);
 		 do{
-			
 			jog_1 = true;
 			acertos = true;
 		 	srand(time(NULL));
 		 	
-		 	do{	
-			 	printf("Por favor, digite seu nome: ");
-			 	fflush(stdin);
-			 	scanf("%[^\n]", usu1);
-				
-			 }while(strlen(usu1) >= 20);
-			 
 			//alocação do valor
 			for(i = qtd_num - 1 ; i< qtd_num; i++){
 				vet[i] = rand() % num + 1;
@@ -64,8 +56,8 @@ main(){
 				
 			}	
 			if (acertos == true){
-				printf("VOCÊ ACERTOU");
-				sleep(2);
+				printf("VOCÊ ACERTOU\n");
+				sleep(1.5);
 				qtd_num++;
 				
 			}
@@ -94,14 +86,16 @@ main(){
 			main();
 		}else{
 			printf("\n\n\tAté a proxima\n\n");
-			sleep (2);
+			_sleep (2000);
 			exit;
 		}
 	}
 	
 	if(escolha == 2){
 		
-		printf("\t\tDOIS JOGADORES");
+		printf("\t\tDOIS JOGADORES\n");
+		sleep(2);
+		system("cls");
 		
 		do{	
 			 	printf("Nome do primeiro jogador: ");
@@ -120,23 +114,48 @@ main(){
 	}
 	
 	if(escolha == 3){
-		
-		printf("*---------------------------------------------------INSTRUÇÕES--------------------------------------------------*");
-		printf("");
-		
-	}		
-}
-
-//Menu
-void menu(){
-	do{
-		printf("\t\t\tGENIUS\n\n\tO que deseja fazer?\n\n 1 - 1 JOGADOR \n\n 2 - 2 JOGADORES\n\n 3 - INSTRUÇÕES\n\n 4 - ABSOLUTAMENTE NADA\n\n Opção\a: ");
-		scanf("%d", &escolha);	
-	}while((escolha <1)||(escolha>4));
-	
+		printf("-----------------------------------INSTRUÇÕES-----------------------------------\n");
+	printf("1.Repita a sequência\n2.Crie sua própria sequência\n3.Repita a seqüência, agora apertando somente um número\n\n");
+	printf("\t\t\tNIVEIS DE DIFICULDADE:\n");
+	printf("Nivel 1: 3 números\nNivel 2: 6 números\nNivel 3: 9 números\nNivel 4: 12 números\n\n");
+	printf("LCMD produções ©\n");
+	sleep(8);
+	system("cls");
+	main();
+	}
 	if(escolha == 4){
 		system("cls");
-		printf("\n\n\tFIM");
-		exit;
+		printf("\n\tATÉ A PROXIMA...\n\n");
+		system("pause");
 	}
+}		
+
+
+//Menu
+int menu(){
+	
+	int escolha = 0;
+	
+	do{
+		printf("\t\t\tGENIUS\n\n\tO que deseja fazer?\n\n 1 - 1 JOGADOR \n\n 2 - 2 JOGADORES\n\n 3 - INSTRUÇÕES\n\n 4 - SAIR DO JOGO\n\n Opção\a: ");
+		scanf("%d", &escolha);
+		if (escolha!=1||escolha!=4||escolha!=3||escolha!=2) {
+			system("cls");
+		}
+	} while((escolha <1)||(escolha>4));
+	
+	return escolha;
 }
+	
+void nome(char usu_nome[20]){
+	
+	char usu1[20], usu2[20];
+	
+		do{	
+			printf("Por favor, digite seu nome: ");
+		 	fflush(stdin);
+		 	scanf("%[^\n]", usu_nome);
+				
+	 }while(strlen(usu1) >= 20);
+			 
+}	
