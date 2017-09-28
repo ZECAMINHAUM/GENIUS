@@ -31,10 +31,10 @@ main(){
 		 	srand(time(NULL));
 		 	
 		 	do{	
-			 	printf("Por favor, digite seu nome man(a): ");
-			 	for(i = 0; i < 20; i++){
-			 		scanf("%s", usu1[i]);
-				 }
+			 	printf("Por favor, digite seu nome: ");
+			 	fflush(stdin);
+			 	scanf("%[^\n]", usu1);
+				
 			 }while(strlen(usu1) >= 20);
 			 
 			//alocação do valor
@@ -71,7 +71,7 @@ main(){
 			}
 			if(acertos == false){
 				printf("VOCÊ ERROU AMIGO(A), MAS NÃO FIQUE TRISTE");
-				printf("\nVOCÊ PAROU NO NÍVEL %d %s", fase, usu1);
+				printf("\nVOCÊ PAROU NO NÍVEL %d, %s", fase, usu1);
 				qtd_num = 1;
 				sleep(3);
 				system("cls");
@@ -91,7 +91,7 @@ main(){
 		
 		if((reload == 's')||(reload == 'sim')||(reload == 'SIM')){
 			system("cls");
-			menu();
+			main();
 		}else{
 			printf("\n\n\tAté a proxima\n\n");
 			sleep (2);
@@ -102,6 +102,18 @@ main(){
 	if(escolha == 2){
 		
 		printf("\t\tDOIS JOGADORES");
+		
+		do{	
+			 	printf("Nome do primeiro jogador: ");
+			 	fflush(stdin);
+			 	scanf("%[^\n]", usu1);
+				
+				printf("Nome do segundo jogador: ");
+			 	fflush(stdin);
+			 	scanf("%[^\n]", usu2);
+			 	
+		}while((strlen(usu1) >= 20)||(strlen(usu2) >= 20));
+		
 		
 		
 		
@@ -118,7 +130,7 @@ main(){
 //Menu
 void menu(){
 	do{
-		printf("\t\t\tGENIUS\n\n\tO que deseja fazer?\n\n 1 - 1 JOGADOR \n\n 2 - 2 JOGADORES\n\n3 - INSTRUÇÕES\n\n 4 - ABSOLUTAMENTE NADA\n\n Opção\a: ");
+		printf("\t\t\tGENIUS\n\n\tO que deseja fazer?\n\n 1 - 1 JOGADOR \n\n 2 - 2 JOGADORES\n\n 3 - INSTRUÇÕES\n\n 4 - ABSOLUTAMENTE NADA\n\n Opção\a: ");
 		scanf("%d", &escolha);	
 	}while((escolha <1)||(escolha>4));
 	
