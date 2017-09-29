@@ -38,7 +38,7 @@ main() {
 				vet[i] = rand() % num + 1;
 				
 			}
-			//valor randomizado
+			//printar valor randomizado
 			for(i = 0; i< qtd_num; i++){
 				system("cls");
 				printf("%d ", vet[i]);
@@ -94,7 +94,7 @@ main() {
 	//DOIS JOGADORES
 	if(escolha == 2){
 		
-		printf("\t\tDOIS JOGADORES\n");
+		printf("\t\tDOIS JOGADORES\n\a");
 		sleep(2);
 		system("cls");
 		
@@ -112,72 +112,82 @@ main() {
 			acertosjog2 = true;
 		 	srand(time(NULL));
 		 	
-			//alocação do valor
-			for(i = qtd_num - 1 ; i< qtd_num; i++){
-				vet[i] = rand() % num + 1;
-				
-			}
-			//valor randomizado
-			for(i = 0; i< qtd_num; i++){
-				system("cls");
-				printf("%d ", vet[i]);
-				sleep(1.6);
-				system("cls");
-			}
-			//pergunta aos usuario	
-			printf("VEZ DO PRIMEIRO JOGADOR");
-			sleep(0.5);
-			for(i = 0; i < qtd_num; i++){
-				printf("\n\n\tqual o número na posição %d ? ", i + 1);
-				scanf("%d", &rejog1[i]);
-				system("cls");
-			}
-			printf("VEZ DO JOGADOR 2");
-			sleep(0.5);
-			for(i = 0; i < qtd_num; i++){
-				printf("\n\n\tqual o número na posição %d ? ", i + 1);
-				scanf("%d", &rejog2[i]);
-				system("cls");
-			}
-			//VERIFICAÇÃO DOS VALORES DOS JOGADORES	
-			for(i = 0; i < qtd_num; i++){
-				if(rejog1[i] != vet[i]){		
-					acertosjog1 = false;
-				}	
-			}
-			for(i = 0; i < qtd_num; i++){
-				if(rejog2[i] != vet[i]){		
-					acertosjog2 = false;
-				}	
-			}
-				
-			if (acertosjog1 == true){
-				printf("JOGADOR 1 ACERTOU\n");
-				sleep(0.5);		
-			}else{
-				system("cls");
-				printf("\n\nJOGADOR 1 PERDEU");
-								
-			}
-			if (acertosjog2 == true){
-				printf("JOGADOR 2 ACERTOU\n");
-				sleep(0.5);		
-			}
-			if ((acertosjog1 == true)&&(acertosjog2 == true)){
-				qtd_num++;			
-			}
-
+			do{
+					//alocação do valor
+				for(i = qtd_num - 1 ; i< qtd_num; i++){
+					vet[i] = rand() % num + 1;
+					
+				}
+				//valor randomizado
+				for(i = 0; i< qtd_num; i++){
+					system("cls");
+					printf("%d ", vet[i]);
+					sleep(1.6);
+					system("cls");
+				}
+				//pergunta aos usuario	
+				printf("VEZ DO PRIMEIRO JOGADOR");
+				sleep(0.5);
+				for(i = 0; i < qtd_num; i++){
+					printf("\n\n\tqual o número na posição %d ? ", i + 1);
+					scanf("%d", &rejog1[i]);
+					system("cls");
+				}
+				printf("VEZ DO JOGADOR 2");
+				sleep(0.5);
+				for(i = 0; i < qtd_num; i++){
+					printf("\n\n\tqual o número na posição %d ? ", i + 1);
+					scanf("%d", &rejog2[i]);
+					system("cls");
+				}
+				//VERIFICAÇÃO DOS VALORES DOS JOGADORES	
+				for(i = 0; i < qtd_num; i++){
+					if(rejog1[i] != vet[i]){		
+						acertosjog1 = false;
+					}	
+				}
+				for(i = 0; i < qtd_num; i++){
+					if(rejog2[i] != vet[i]){		
+						acertosjog2 = false;
+					}	
+				}
+					
+				if (acertosjog1 == false){		
+					system("cls");
+					printf("\n\n%s PERDEU", strupr(usu1));
+					printf("\nVOCÊ PAROU NO NÍVEL %d, %s", fase, strupr(usu1));
+					qtd_num = 1;
+					sleep(3);
+					system("cls");
+					jog_1 = false;					
+				}
+				if( acertosjog2 == false) {	
+					system("cls");
+					printf("\n\n%s PERDEU", strupr(usu2));
+					printf("\nVOCÊ PAROU NO NÍVEL %d, %s", fase, strupr(usu2));
+					qtd_num = 1;
+					sleep(3);
+					system("cls");
+					jog_1 = false;          	
+				}
+				if(qtd_num % 10 == 0){
+					fase++;
+					num = num + 3;
+				}
+			}while((jog_1 == false)||(jog_2 == false));
 			
-			
-			
-			
-			
-			
-			
-			
-			//verificação dos valores	
-				
+			system("cls");
+			printf("\nVocê deseja continuar jogando? \nSIM OU NÃO \n\tresposta: ");
+			scanf("%s", &reload);
 		
+			if((reload == 's')||(reload == 'sim')||(reload == 'SIM')||(reload == 'S')){
+				system("cls");
+				main();
+			}else{
+				printf("\n\n\tAté a proxima\n\n");
+				sleep (2000);
+				exit;
+			}	
 	}
 	//INSTRUÇÕES 
 	if(escolha == 3){
@@ -196,7 +206,8 @@ main() {
 		printf("\n\tATÉ A PROXIMA...\n\n");
 		system("pause");
 	}
-}		
+
+}
 //Menu
 int menu(){
 	
