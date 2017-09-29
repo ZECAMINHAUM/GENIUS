@@ -8,7 +8,6 @@
 #define true 1
 #define false 0
 
-
 int menu();
 void nome(char usu_nome[20]);
 
@@ -16,8 +15,7 @@ main() {
 	setlocale(LC_ALL, "portuguese");
 	unsigned short int vet[256], rejog1[256], rejog2[256], i, aux = 0, fase = 1, num = 3, qtd_num = 1, escolha;
 	char usu1[20], usu2[20], reload;
-	int jog_1, jog_2, acertosjog1, acertosjog2;
-	
+	int jog_1, jog_2, acertosjog1, acertosjog2;	
 	//MENU
 	escolha = menu();
 	system("cls");
@@ -60,8 +58,7 @@ main() {
 			if (acertosjog1 == true){
 				printf("VOCÊ ACERTOU\n");
 				sleep(0.5);
-				qtd_num++;
-				
+				qtd_num++;		
 			}
 			if(acertosjog1 == false){
 				printf("VOCÊ ERROU AMIGO(A), MAS NÃO FIQUE TRISTE");
@@ -74,8 +71,7 @@ main() {
 			if(qtd_num % 10 == 0){
 				fase++;
 				num = num + 3;
-			}
-			
+			}	
 		}while(jog_1 == true);	 	
 		
 		system("cls");
@@ -87,7 +83,7 @@ main() {
 			main();
 		}else{
 			printf("\n\n\tAté a proxima\n\n");
-			_sleep (2000);
+			sleep (2);
 			exit;
 		}
 	}
@@ -105,7 +101,6 @@ main() {
 		nome(usu2);
 		system("cls");
 		
-		
 			jog_1 = true;
 			jog_2 = true;
 			acertosjog1 = true;
@@ -113,19 +108,19 @@ main() {
 		 	srand(time(NULL));
 		 	
 			do{
-					//alocação do valor
+				//alocação do valor
 				for(i = qtd_num - 1 ; i< qtd_num; i++){
 					vet[i] = rand() % num + 1;
 					
 				}
-				//valor randomizado
+				//valor randomizado para jogador 1 
 				for(i = 0; i< qtd_num; i++){
 					system("cls");
 					printf("%d ", vet[i]);
 					sleep(1.6);
 					system("cls");
 				}
-				//pergunta aos usuario	
+				//pergunta ao jogador 1	
 				printf("VEZ DO PRIMEIRO JOGADOR");
 				sleep(0.5);
 				for(i = 0; i < qtd_num; i++){
@@ -133,25 +128,12 @@ main() {
 					scanf("%d", &rejog1[i]);
 					system("cls");
 				}
-				printf("VEZ DO JOGADOR 2");
-				sleep(0.5);
-				for(i = 0; i < qtd_num; i++){
-					printf("\n\n\tqual o número na posição %d ? ", i + 1);
-					scanf("%d", &rejog2[i]);
-					system("cls");
-				}
-				//VERIFICAÇÃO DOS VALORES DOS JOGADORES	
+				//VERIFICAÇÃO DOS VALORES DO JOGADOR 1 
 				for(i = 0; i < qtd_num; i++){
 					if(rejog1[i] != vet[i]){		
 						acertosjog1 = false;
 					}	
 				}
-				for(i = 0; i < qtd_num; i++){
-					if(rejog2[i] != vet[i]){		
-						acertosjog2 = false;
-					}	
-				}
-					
 				if (acertosjog1 == false){		
 					system("cls");
 					printf("\n\n%s PERDEU", strupr(usu1));
@@ -160,6 +142,31 @@ main() {
 					sleep(3);
 					system("cls");
 					jog_1 = false;					
+				}
+				qtd_num++;
+				for(i = qtd_num - 1 ; i< qtd_num; i++){
+					vet[i] = rand() % num + 1;	
+				}
+				//random para jogador 2
+				for(i = 0; i< qtd_num; i++){
+					system("cls");
+					printf("%d ", vet[i]);
+					sleep(1.6);
+					system("cls");
+				}
+				//pergunta para jogador 2
+				printf("VEZ DO JOGADOR 2");
+				sleep(0.5);
+				for(i = 0; i < qtd_num; i++){
+					printf("\n\n\tqual o número na posição %d ? ", i + 1);
+					scanf("%d", &rejog2[i]);
+					system("cls");
+				}
+				//verificação do jogador 2
+				for(i = 0; i < qtd_num; i++){
+					if(rejog2[i] != vet[i]){		
+						acertosjog2 = false;
+					}	
 				}
 				if( acertosjog2 == false) {	
 					system("cls");
@@ -170,14 +177,16 @@ main() {
 					system("cls");
 					jog_1 = false;          	
 				}
+				qtd_num++;
+				
 				if(qtd_num % 10 == 0){
 					fase++;
 					num = num + 3;
 				}
-			}while((jog_1 == false)||(jog_2 == false));
+			}while((jog_1 == true)&&(jog_2 == true));
 			
 			system("cls");
-			printf("\nVocê deseja continuar jogando? \nSIM OU NÃO \n\tresposta: ");
+			printf("\nVocês deseja continuar jogando? \nSIM OU NÃO \n\tresposta: ");
 			scanf("%s", &reload);
 		
 			if((reload == 's')||(reload == 'sim')||(reload == 'SIM')||(reload == 'S')){
@@ -185,7 +194,7 @@ main() {
 				main();
 			}else{
 				printf("\n\n\tAté a proxima\n\n");
-				sleep (2000);
+				sleep (2);
 				exit;
 			}	
 	}
@@ -206,11 +215,9 @@ main() {
 		printf("\n\tATÉ A PROXIMA...\n\n");
 		system("pause");
 	}
-
 }
 //Menu
-int menu(){
-	
+int menu(){	
 	int escolha = 0;
 	
 	do{
@@ -222,15 +229,12 @@ int menu(){
 	} while((escolha <1)||(escolha>4));
 	
 	return escolha;
-}
-	
+}	
 void nome(char usu_nome[20]){
 	
 	do{		
 		printf("POR FAVOR, DIGITE O NOME DO JOGADOR: ");
 	 	fflush(stdin);
 		scanf("%[^\n]", usu_nome);
-	}while(strlen(usu_nome) >= 20);
-		 
-	 			 
+	}while(strlen(usu_nome) >= 20);	 			 
 }	
