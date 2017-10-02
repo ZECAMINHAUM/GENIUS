@@ -1,7 +1,0 @@
-printf("-----------------------------------INSTRUÇÕES-----------------------------------\n");
-printf("1.Repita a sequência\n2.Crie sua própria sequência\n3.Repita a seqüência, agora apertando somente um número\n\n");
-printf("\t\t\tNIVEIS DE DIFICULDADE:\n");
-printf("Nivel 1: 3 números\nNivel 2: 6 números\nNivel 3: 9 números\nNivel 4: 12 números\n\n");
-printf("LCMD produções ©\n");
-
-}
