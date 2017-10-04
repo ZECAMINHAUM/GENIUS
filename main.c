@@ -25,7 +25,6 @@ main() {
 		 do{
 			jog_1 = true;
 		 	srand(time(NULL));
-			//alocação do valor
 			for(i = qtd_num - 1 ; i< qtd_num; i++){
 				vet[i] = rand() % num + 1;	
 			}	
@@ -35,22 +34,21 @@ main() {
 				sleep(1.6);
 				system("cls");
 			}
-			//pergunta ao usuario
 			for(i = 0; i< qtd_num; i++){
-				printf("\n\tQual o número na posição %d? ", i + 1);
+				printf("\n\tQual o nÃºmero na posiÃ§Ã£o %d? ", i + 1);
 				scanf("%d", &rejog1[i]);
 				fflush(stdin);
 				system("cls");
 				if(rejog1[i] != vet[i]){
-					printf("VOCÊ ERROU AMIGO(A), MAS NÃO FIQUE TRISTE");
-					printf("\nVOCÊ PAROU NO NÍVEL %d, %s", fase, strupr(usu1));
+					printf("VOCÃŠ ERROU AMIGO(A), MAS NÃƒO FIQUE TRISTE");
+					printf("\nVOCÃŠ PAROU NO NÃVEL %d, %s", fase, strupr(usu1));
 					qtd_num = 1;
 					sleep(3);
 					system("cls");
 					jog_1 = false;	
 				}	
 			}
-			printf("VOCÊ ACERTOU\n");
+			printf("VOCÃŠ ACERTOU\n");
 			sleep(1);
 			qtd_num++;		
 					
@@ -61,19 +59,18 @@ main() {
 		}while(jog_1 == true);	 	
 		
 		system("cls");
-		printf("\nVocê deseja continuar jogando? \nSIM OU NÃO \n\tresposta: ");
+		printf("\nVocÃª deseja continuar jogando? \nSIM OU NÃƒO \n\tresposta: ");
 		scanf("%s", &reload);
 		
 		if((reload == 's')||(reload == 'sim')||(reload == 'SIM')||(reload == 'S')){
 			system("cls");
 			main();
 		}else{
-			printf("\n\n\tAté a proxima\n\n");
+			printf("\n\n\tAtÃ© a proxima\n\n");
 			sleep (2);
 			exit;
 		}
 	}
-	//DOIS JOGADORES
 	if(escolha == 2){
 		printf("\t\tDOIS JOGADORES\n\a");
 		sleep(2);
@@ -87,8 +84,7 @@ main() {
 			jog_1 = true;
 			jog_2 = true;
 		 	srand(time(NULL));
-		 	do{
-				//alocação do valor 1 
+		 	do{	
 				for(i = qtd_num-1; i< qtd_num; i++){
 					vet[i] = rand() % num + 1;
 				}
@@ -98,17 +94,16 @@ main() {
 					sleep(1.6);
 					system("cls");
 				}
-				//pergunta ao jogador 1	
 				printf("VEZ DE %s",strupr(usu1));
 				sleep(0.5);
 				for(i = 0; i < qtd_num; i++){
-					printf("\n\tQual o número na posição %d? ", i + 1);
+					printf("\n\tQual o nÃºmero na posiÃ§Ã£o %d? ", i + 1);
 					scanf("%d", &rejog1[i]);
 					fflush(stdin);
 					system("cls");
 					if(rejog1[i] != vet[i]){
 						printf("\n\t%s PERDEU, %s GANHOU", strupr(usu1),strupr(usu2));
-						printf("\n\tVOCÊ PAROU NO NÍVEL %d, %s",fase,strupr(usu1));
+						printf("\n\tVOCÃŠ PAROU NO NÃVEL %d, %s",fase,strupr(usu1));
 						qtd_num = 1;
 						sleep(3);
 						system("cls");
@@ -117,7 +112,6 @@ main() {
 				}
 				if (jog_1 == true){
 					qtd_num++;
-					//alocação do valor 2
 					for(i=qtd_num-1; i<qtd_num; i++) {
 						vet[i]=rand() % num + 1;
 					}
@@ -127,16 +121,15 @@ main() {
 						sleep(1.6);
 						system("cls");
 					}
-					//pergunta para jogador 2
 					printf("VEZ DE %s",strupr(usu2));
 					sleep(0.5);
 					for(i = 0; i < qtd_num; i++){
-						printf("\n\tQual o número na posição %d? ", i + 1);
+						printf("\n\tQual o nÃºmero na posiÃ§Ã£o %d? ", i + 1);
 						scanf("%d", &rejog2[i]);
 						system("cls");
 						if(rejog2[i] != vet[i]){		
 							printf("\n\t%s PERDEU, %s GANHOU", strupr(usu2),strupr(usu1));
-							printf("\n\tVOCÊ PAROU NO NÍVEL %d, %s", fase, strupr(usu2));
+							printf("\n\tVOCÃŠ PAROU NO NÃVEL %d, %s", fase, strupr(usu2));
 							qtd_num = 1;
 							sleep(3);
 							system("cls");
@@ -151,7 +144,7 @@ main() {
 				}
 			}while((jog_1 == true)&&(jog_2 == true));
 			system("cls");
-			printf("\n\t\tVocês desejam continuar jogando? \n\tSIM OU NÃO \n\tresposta: ");
+			printf("\n\t\tVocÃªs desejam continuar jogando? \n\tSIM OU NÃƒO \n\tresposta: ");
 			scanf("%s", &reload);
 		
 			if((reload == 's')||(reload == 'sim')||(reload == 'SIM')||(reload == 'S')){
@@ -159,36 +152,32 @@ main() {
 				main();
 			}
 			else{
-				printf("\n\n\tAté a proxima\n\n");
+				printf("\n\n\tAtÃ© a proxima\n\n");
 				sleep (2);
 				exit;
 			}	
 	}
-	//INSTRUÇÕES 
 	if(escolha == 3){
-		printf("-----------------------------------INSTRUÇÕES-----------------------------------\n");
-		printf("1.Repita a sequência\n2.Crie sua própria sequência\n3.Repita a seqüência, agora apertando somente um número\n\n");
+		printf("-----------------------------------INSTRUÃ‡Ã•ES-----------------------------------\n");
+		printf("1.Repita a sequÃªncia\n2.Crie sua prÃ³pria sequÃªncia\n3.Repita a seqÃ¼Ãªncia, agora apertando somente um nÃºmero\n\n");
 		printf("------------------------------NIVEIS DE DIFICULDADE------------------------------\n");
-		printf("Nivel 1: 3 números\nNivel 2: 6 números\nNivel 3: 9 números\nNivel 4: 12 números\n\n");
-		printf("LCMD produções ©\n");
+		printf("Nivel 1: 3 nÃºmeros\nNivel 2: 6 nÃºmeros\nNivel 3: 9 nÃºmeros\nNivel 4: 12 nÃºmeros\n\n");
+		printf("LCMD produÃ§Ãµes Â©\n");
 		printf("--------------------------------------------------------------------------------\n");
 		sleep(8);
 		system("cls");
 		main();
 	}
-	//SAIR
 	if(escolha == 4){
 		system("cls");
-		printf("\n\tATÉ A PROXIMA...\n\n");
+		printf("\n\tATÃ‰ A PROXIMA...\n\n");
 		system("pause");
 	}
 }
-//Menu 
 int menu(){	
 	int escolha = 0;
-	
 	do{
-		printf("\t\t\tGENIUS\n\n\tO QUE DESEJA FAZER ?\n\n 1 - 1 JOGADOR \n\n 2 - 2 JOGADORES\n\n 3 - INSTRUÇÕES\n\n 4 - SAIR DO JOGO\n\n Opção\a: ");
+		printf("\t\t\tGENIUS\n\n\tO QUE DESEJA FAZER ?\n\n 1 - 1 JOGADOR \n\n 2 - 2 JOGADORES\n\n 3 - INSTRUÃ‡Ã•ES\n\n 4 - SAIR DO JOGO\n\n OpÃ§Ã£o\a: ");
 		scanf("%d", &escolha);
 		if (escolha!=1||escolha!=4||escolha!=3||escolha!=2) {
 			system("cls");
@@ -197,7 +186,6 @@ int menu(){
 	return escolha;
 }	
 void nome(char usu_nome[20]){
-	
 	do{		
 		printf("POR FAVOR, DIGITE O NOME DO JOGADOR: ");
 	 	fflush(stdin);
